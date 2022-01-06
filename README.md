@@ -1,5 +1,56 @@
 # PaginatedApiProcessing
 
+## How to use
+1. Clone this repo
+2. `npm i`
+3. `ng server --open`
+4. Open console in developer tools
+5. Hit "Get data and process it"
+
+## Using *instantwebtools* for the fake API data
+### [https://www.instantwebtools.net/fake-rest-api]()
+
+
+
+#### [https://api.instantwebtools.net/v1/passenger?page=0&size=10]() endpoint to get the paginated passenger data.
+
+
+##### Response example
+```json
+{
+    "totalPassengers": 6,
+    "totalPages": 6,
+    "data": [
+        {
+            "_id": "5eef7f1bdfaf515ddc9feade",
+            "name": "Saman Jeewantha",
+            "trips": 500,
+            "airline": [
+                {
+                    "id": 4,
+                    "name": "Emirates",
+                    "country": "Dubai",
+                    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Emirates_logo.svg/150px-Emirates_logo.svg.png",
+                    "slogan": "From Dubai to destinations around the world.",
+                    "head_quaters": "Garhoud, Dubai, United Arab Emirates",
+                    "website": "www.emirates.com/",
+                    "established": "1985"
+                }
+            ],
+            "__v": 0
+        }
+    ]
+}
+```
+
+
+
+
+
+
+
+
+## Angular Boilerplate readme
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
 ## Development server
