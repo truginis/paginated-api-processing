@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AppService} from "./app.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,28 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'paginated-api-processing';
+  passengers: Array<any> = [];
+  currentPage = 0;
+
+  constructor(private appService:AppService) {
+  }
+
+  processData(start = 0, pageLimit = 5) {
+    this.appService.processPaginatedAPI(0)
+      .subscribe(data => {
+          // I am pushing data to an array to just show it in the UI
+          // you can do whatever data processing or transformation here.
+          this.passengers.push(...data);
+
+          // this would be "start" point for getting data
+          // you would keep going until there are fewer records than the limit,
+          // I am limiting this (pageLimit) so I don't hammer the API for no reason
+          this.currentPage++;
+
+          // if limit is not reached go to next page/next batch
+          if (this.currentPage < pageLimit) {
+            this.processData(this.currentPage);
+          }
+      })
+  }
 }
